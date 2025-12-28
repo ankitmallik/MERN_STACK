@@ -10,13 +10,21 @@
 
 // })
 
+// fetch("https://dummyjson.com/users")
+//   .then((res) => {
+//     return res.json();
+//   })
+//   .then((data) => {
+//     console.log(data.users[0].address.coordinates);
+//   })
+//   .catch(() => {
+//     console.log("error");
+//   });
+
 fetch("https://dummyjson.com/users")
-  .then((res) => {
-    return res.json();
+  .then((res) => res.json())
+  .then(({ users }) => {
+    const { coordinates } = users[0].address;
+    console.log(coordinates);
   })
-  .then((res) => {
-    console.log(res.users[0].address.coordinates);
-  })
-  .catch(() => {
-    console.log("error");
-  });
+  .catch(() => console.log("error"));
